@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>计算结果 - 卡厄斯工坊</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            font-family: sans-serif;
+        }
+        .result-container {
+            min-height: 100vh;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+        .result-text {
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(10px);
+            padding: 30px 40px;
+            border-radius: 0;
+            text-align: center;
+        }
+        .score-text {
+            font-size: 48px;
+            font-weight: bold;
+            color: #e63946;
+            margin: 10px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        }
+        .rank-text {
+            font-size: 28px;
+            color: #4361ee;
+            margin: 10px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        }
+        .rate-text {
+            font-size: 24px;
+            color: #f77f00;
+            margin: 10px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        }
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            width: 100%;
+            max-width: 350px;
+            margin-top: 40px;
+        }
+        .btn-green {
+            flex: 1;
+            background: #22c55e;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 0;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .btn-gray {
+            flex: 1;
+            background: white;
+            color: #1a1a1a;
+            border: none;
+            padding: 12px;
+            border-radius: 0;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="result-container">
+        <h1 style="font-size: 32px; margin-bottom: 40px; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">计算结果</h1>
+
+        <div class="result-text">
+            <div class="score-text">总分：<span id="finalScore">0</span></div>
+            <div class="rank-text">评级：<span id="finalRank">--</span></div>
+            <div class="rate-text">毕业率：<span id="finalRate">0.0%</span></div>
+        </div>
+
+        <div class="btn-group">
+            <button class="btn-green" onclick="window.history.back()">返回计算</button>
+            <button class="btn-gray" onclick="saveResult()">保存结果</button>
+        </div>
+    </div>
+
+    <script src="js/common.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            // 1. 读取计算结果
+            const result = JSON.parse(localStorage.getItem('lastResult') || '{}');
+            if (result.totalScore) {
+                document.getElementById('finalScore').textContent = result.totalScore;
+                document.getElementById('finalRank').textContent = result.rank;
+                document.getElementById('finalRate').textContent = result.graduationRate + '%';
+            }
+
+            // 设置固定背景图：维若妮卡.png
+            const bgPath = 'background/维若妮卡.png';
+            document.body.style.backgroundImage = `url('${bgPath}')`;
+        });
+
+        // 保存结果为图片
+        function saveResult() {
+            const container = document.querySelector('.result-container');
+            html2canvas(container).then(canvas => {
+                const link = document.createElement('a');
+                link.download = '碎片计算结果.png';
+                link.href = canvas.toDataURL();
+                link.click();
+            });
+        }
+    </script>
+</body>
+</html>

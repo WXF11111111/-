@@ -1,0 +1,252 @@
+{
+    "characters": [
+        {
+            "id": "heidemali",
+            "name": "海德玛丽",
+            "chain": 1,
+            "level": 60,
+            "image": "assets/海德玛丽.png",
+            "recommendAttrs": ["攻击%", "暴击%", "暴伤%", "湮灭伤害加成"]
+        },
+        {
+            "id": "weianna",
+            "name": "维安娜",
+            "chain": 2,
+            "level": 60,
+            "image": "assets/维安娜.png",
+            "recommendAttrs": ["攻击%", "暴击%", "暴伤%", "侵蚀伤害加成"]
+        },
+        {
+            "id": "lita",
+            "name": "丽塔",
+            "chain": 3,
+            "level": 60,
+            "image": "assets/丽塔.png",
+            "recommendAttrs": ["攻击%", "暴击%", "暴伤%", "燃烧伤害加成"]
+        },
+        {
+            "id": "difeila",
+            "name": "蒂菲拉",
+            "chain": 4,
+            "level": 60,
+            "image": "assets/蒂菲拉.png",
+            "recommendAttrs": ["攻击%", "暴击%", "暴伤%", "秩序伤害加成"]
+        },
+        {
+            "id": "naiyin",
+            "name": "奈音",
+            "chain": 5,
+            "level": 60,
+            "image": "assets/奈音.png",
+            "recommendAttrs": ["攻击%", "暴击%", "暴伤%", "虚无伤害加成"]
+        },
+        {
+            "id": "najia",
+            "name": "娜嘉",
+            "chain": 6,
+            "level": 60,
+            "image": "assets/娜嘉.png",
+            "recommendAttrs": ["攻击%", "暴击%", "暴伤%", "秩序伤害加成"]
+        },
+        {
+            "id": "saileinier",
+            "name": "赛雷妮尔",
+            "chain": 7,
+            "level": 60,
+            "image": "assets/赛雷妮尔.png",
+            "recommendAttrs": ["攻击%", "暴击%", "暴伤%", "湮灭伤害加成"]
+        },
+        {
+            "id": "qianhe",
+            "name": "千鹤",
+            "chain": 8,
+            "level": 60,
+            "image": "assets/千鹤.png",
+            "recommendAttrs": ["攻击%", "暴击%", "暴伤%", "侵蚀伤害加成"]
+        },
+        {
+            "id": "youji",
+            "name": "友纪",
+            "chain": 1,
+            "level": 60,
+            "image": "assets/友纪.png",
+            "recommendAttrs": ["攻击%", "暴击%", "暴伤%", "燃烧伤害加成"]
+        },
+        {
+            "id": "xiaochun",
+            "name": "小春",
+            "chain": 2,
+            "level": 60,
+            "image": "assets/小春.png",
+            "recommendAttrs": ["攻击%", "暴击%", "暴伤%", "秩序伤害加成"]
+        },
+        {
+            "id": "lin",
+            "name": "琳",
+            "chain": 3,
+            "level": 60,
+            "image": "assets/琳.png",
+            "recommendAttrs": ["攻击%", "暴击%", "暴伤%", "虚无伤害加成"]
+        },
+        {
+            "id": "luke",
+            "name": "路克",
+            "chain": 4,
+            "level": 60,
+            "image": "assets/路克.png",
+            "recommendAttrs": ["攻击%", "暴击%", "暴伤%", "湮灭伤害加成"]
+        },
+        {
+            "id": "kalipei",
+            "name": "卡莉佩",
+            "chain": 5,
+            "level": 60,
+            "image": "assets/卡莉佩.png",
+            "recommendAttrs": ["HP%", "防御%", "自我意识恢复", "治疗加成"]
+        },
+        {
+            "id": "maigena",
+            "name": "麦格纳",
+            "chain": 6,
+            "level": 60,
+            "image": "assets/麦格纳.png",
+            "recommendAttrs": ["攻击%", "暴击%", "暴伤%", "侵蚀伤害加成"]
+        },
+        {
+            "id": "aoerlaiya",
+            "name": "奥尔莱亚",
+            "chain": 7,
+            "level": 60,
+            "image": "assets/奥尔莱亚.png",
+            "recommendAttrs": ["攻击%", "暴击%", "暴伤%", "燃烧伤害加成"]
+        },
+        {
+            "id": "meiling",
+            "name": "梅铃",
+            "chain": 8,
+            "level": 60,
+            "image": "assets/梅铃.png",
+            "recommendAttrs": ["攻击%", "暴击%", "暴伤%", "秩序伤害加成"]
+        },
+        {
+            "id": "weiruonika",
+            "name": "维若妮卡",
+            "chain": 1,
+            "level": 60,
+            "image": "assets/维若妮卡.png",
+            "recommendAttrs": ["攻击%", "暴击%", "暴伤%", "虚无伤害加成"]
+        },
+        {
+            "id": "leiona",
+            "name": "蕾欧娜",
+            "chain": 2,
+            "level": 60,
+            "image": "assets/蕾欧娜.png",
+            "recommendAttrs": ["HP%", "防御%", "自我意识恢复", "减伤%"]
+        },
+        {
+            "id": "yuguo",
+            "name": "雨果",
+            "chain": 3,
+            "level": 60,
+            "image": "assets/雨果.png",
+            "recommendAttrs": ["攻击%", "暴击%", "暴伤%", "湮灭伤害加成"]
+        },
+        {
+            "id": "kailong",
+            "name": "凯隆",
+            "chain": 4,
+            "level": 60,
+            "image": "assets/凯隆.png",
+            "recommendAttrs": ["攻击%", "暴击%", "暴伤%", "侵蚀伤害加成"]
+        },
+        {
+            "id": "niya",
+            "name": "妮雅",
+            "chain": 5,
+            "level": 60,
+            "image": "assets/妮雅.png",
+            "recommendAttrs": ["攻击%", "暴击%", "暴伤%", "燃烧伤害加成"]
+        },
+        {
+            "id": "xilinna",
+            "name": "席琳娜",
+            "chain": 6,
+            "level": 60,
+            "image": "assets/席琳娜.png",
+            "recommendAttrs": ["攻击%", "暴击%", "暴伤%", "秩序伤害加成"]
+        },
+        {
+            "id": "deleisha",
+            "name": "德蕾莎",
+            "chain": 7,
+            "level": 60,
+            "image": "assets/德蕾莎.png",
+            "recommendAttrs": ["攻击%", "暴击%", "暴伤%", "虚无伤害加成"]
+        },
+        {
+            "id": "aimei",
+            "name": "艾美",
+            "chain": 8,
+            "level": 60,
+            "image": "assets/艾美.png",
+            "recommendAttrs": ["HP%", "防御%", "自我意识恢复", "治疗加成"]
+        },
+        {
+            "id": "lukasi",
+            "name": "卢卡斯",
+            "chain": 1,
+            "level": 60,
+            "image": "assets/卢卡斯.png",
+            "recommendAttrs": ["攻击%", "暴击%", "暴伤%", "湮灭伤害加成"]
+        },
+        {
+            "id": "malibeier",
+            "name": "玛丽贝尔",
+            "chain": 2,
+            "level": 60,
+            "image": "assets/玛丽贝尔.png",
+            "recommendAttrs": ["攻击%", "暴击%", "暴伤%", "侵蚀伤害加成"]
+        },
+        {
+            "id": "mika",
+            "name": "米卡",
+            "chain": 3,
+            "level": 60,
+            "image": "assets/米卡.png",
+            "recommendAttrs": ["攻击%", "暴击%", "暴伤%", "燃烧伤害加成"]
+        },
+        {
+            "id": "bailier",
+            "name": "百丽儿",
+            "chain": 4,
+            "level": 60,
+            "image": "assets/百丽儿.png",
+            "recommendAttrs": ["攻击%", "暴击%", "暴伤%", "秩序伤害加成"]
+        },
+        {
+            "id": "kaisixiusi",
+            "name": "凯西乌斯",
+            "chain": 5,
+            "level": 60,
+            "image": "assets/凯西乌斯.png",
+            "recommendAttrs": ["HP%", "防御%", "自我意识恢复", "减伤%"]
+        },
+        {
+            "id": "ouwen",
+            "name": "欧文",
+            "chain": 6,
+            "level": 60,
+            "image": "assets/欧文.png",
+            "recommendAttrs": ["攻击%", "暴击%", "暴伤%", "虚无伤害加成"]
+        },
+        {
+            "id": "leiyi",
+            "name": "蕾伊",
+            "chain": 7,
+            "level": 60,
+            "image": "assets/蕾伊.png",
+            "recommendAttrs": ["攻击%", "暴击%", "暴伤%", "湮灭伤害加成"]
+        }
+    ]
+}

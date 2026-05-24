@@ -1,0 +1,65 @@
+.calculator-container {
+    padding: 16px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.result-display {
+    text-align: center;
+    padding: 20px;
+    background: var(--bg-card);
+    border-radius: 0;
+    margin-top: 20px;
+    border: 1px solid var(--border-color);
+}
+
+.score-value {
+    font-size: 48px;
+    font-weight: bold;
+    color: var(--success);
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: var(--border-color);
+    border-radius: 0;
+    margin-top: 10px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #e63946, #f1faee, #457b9d);
+    transition: width 0.5s ease;
+}
+
+/* 碎片部位选择 */
+.part-tabs {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+}
+
+.part-tab {
+    padding: 8px 12px;
+    background-color: var(--border-color);
+    border-radius: 0;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.part-tab.active {
+    background-color: var(--accent);
+    color: white;
+}
+
+/* 词条输入区 */
+.attr-inputs {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 8px;
+    margin-bottom: 8px;
+}
