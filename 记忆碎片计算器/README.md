@@ -48,7 +48,3 @@
 - 支持31个角色
 - 碎片评分系统
 - Windows风格UI
-
-## 📄 许可证
-
-MIT License
