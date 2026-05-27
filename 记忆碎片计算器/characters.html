@@ -4,37 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>角色管理 - 卡厄斯工坊</title>
+
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
+
     <div class="container">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin: 20px 0;">
-            <h1 style="font-size: 24px;">我的角色</h1>
-            <button class="btn" onclick="showModal('createCharacterModal')">新建角色</button>
-        </div>
 
-        <!-- 我的角色列表 -->
-        <div id="myCharacters" class="character-grid">
-            <div style="grid-column: 1/-1; text-align: center; color: var(--text-secondary); padding: 20px;">
-                暂无角色，点击"新建角色"添加
+        <!-- Header -->
+        <header class="page-header row">
+            <h1 class="title">我的角色</h1>
+
+            <button class="btn primary" onclick="openModal('createCharacterModal')">
+                新建角色
+            </button>
+        </header>
+
+        <!-- Character Grid -->
+        <section id="myCharacters" class="character-grid empty-state">
+            暂无角色，点击右上角“新建角色”添加
+        </section>
+
+    </div>
+
+    <!-- Modal -->
+    <div id="createCharacterModal" class="modal hidden">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h2>新建角色</h2>
+                <button class="close-btn" onclick="closeModal('createCharacterModal')">×</button>
             </div>
-        </div>
 
-        <!-- 新建角色弹窗 -->
-        <div id="createCharacterModal" class="modal">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h2>新建角色</h2>
-                    <span class="close-btn" onclick="hideModal('createCharacterModal')">×</span>
-                </div>
-                
-                <div class="input-group">
+            <form id="characterForm">
+
+                <div class="form-group">
                     <label>选择角色</label>
-                    <select id="characterSelect">
-                    </select>
+                    <select id="characterSelect"></select>
                 </div>
 
-                <div class="input-group">
+                <div class="form-group">
                     <label>自我意识等级</label>
                     <select id="selfLevel">
                         <option value="0">0</option>
@@ -47,33 +58,43 @@
                     </select>
                 </div>
 
-                <div class="input-group">
+                <div class="form-group">
                     <label>角色等级</label>
                     <select id="charLevel">
-                        <option value="40">40级</option>
-                        <option value="50">50级</option>
-                        <option value="60" selected>60级</option>
+                        <option value="40">40</option>
+                        <option value="50">50</option>
+                        <option value="60" selected>60</option>
                     </select>
                 </div>
 
-                <button class="btn" style="width: 100%; margin-top: 20px;" onclick="createCharacter()">创建角色</button>
-            </div>
+                <button type="button" class="btn primary full-width" onclick="createCharacter()">
+                    创建角色
+                </button>
+
+            </form>
+
         </div>
+
     </div>
 
+    <!-- Bottom Nav -->
     <nav class="nav-bar">
+
         <a href="index.html" class="nav-item" data-page="index">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
             <span>首页</span>
         </a>
+
         <a href="characters.html" class="nav-item active" data-page="characters">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
             <span>角色柜</span>
         </a>
+
     </nav>
 
     <script src="js/data.js"></script>
     <script src="js/common.js"></script>
     <script src="js/characters.js"></script>
+
 </body>
 </html>
