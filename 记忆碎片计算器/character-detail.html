@@ -4,56 +4,79 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>角色详情 - 卡厄斯工坊</title>
+
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
-    <div class="container">
-        <div id="characterInfo" class="card" style="display: flex; gap: 16px; align-items: center;">
-            <img id="charImage" src="" alt="" style="width: 80px; height: 80px; border-radius: 0;">
-            <div>
-                <h2 id="charName" style="font-size: 20px;"></h2>
-                <p id="charInfo" style="color: var(--text-secondary); font-size: 14px;"></p>
-            </div>
+
+<div class="container">
+
+    <!-- Character Info -->
+    <section class="card character-header">
+
+        <img id="charImage" class="avatar" src="" alt="">
+
+        <div class="character-meta">
+            <h2 id="charName"></h2>
+            <p id="charInfo"></p>
         </div>
 
-        <!-- 碎片数据状态 -->
-        <div class="card">
-            <h3 style="margin-bottom: 12px;">记忆碎片数据</h3>
-            <div id="fragmentStatus">
-                <!-- 动态显示 -->
-            </div>
-            <button id="addFragmentBtn" class="btn" style="width: 100%; margin-top: 16px;">
-                录入碎片数据
-            </button>
-            <!-- 汇总计算按钮 -->
-            <button class="btn" style="width:100%;margin-top:12px;background:#0078d7;" onclick="calculateTotalScore()">
-                汇总计算6个碎片评分
-            </button>
+    </section>
+
+    <!-- Fragment Section -->
+    <section class="card">
+
+        <h3 class="section-title">记忆碎片数据</h3>
+
+        <div id="fragmentStatus" class="fragment-list"></div>
+
+        <button id="addFragmentBtn" class="btn primary full-width">
+            录入碎片数据
+        </button>
+
+        <button class="btn secondary full-width mt-12"
+                onclick="calculateTotalScore()">
+            汇总计算6个碎片评分
+        </button>
+
+    </section>
+
+    <!-- Result -->
+    <section id="scoreResult" class="card hidden">
+
+        <h3 class="section-title">评分结果</h3>
+
+        <div class="result-center">
+
+            <div class="score" id="totalScore">0</div>
+
+            <div class="rate" id="graduationRate">毕业率：0%</div>
+
         </div>
 
-        <!-- 评分结果 -->
-        <div id="scoreResult" class="card" style="display: none;">
-            <h3 style="margin-bottom: 12px;">碎片评分汇总</h3>
-            <div style="text-align: center; padding: 16px 0;">
-                <div style="font-size: 36px; font-weight: bold; color: var(--success);" id="totalScore">0</div>
-                <div style="color: var(--text-secondary); margin-top: 8px;" id="graduationRate">毕业率：0%</div>
-            </div>
-        </div>
-    </div>
+    </section>
 
-    <nav class="nav-bar">
-        <a href="index.html" class="nav-item" data-page="index">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
-            <span>首页</span>
-        </a>
-        <a href="characters.html" class="nav-item active" data-page="characters">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-            <span>角色柜</span>
-        </a>
-    </nav>
+</div>
 
-    <script src="js/data.js"></script>
-    <script src="js/common.js"></script>
-    <script src="js/character-detail.js"></script>
+<!-- Bottom Nav -->
+<nav class="nav-bar">
+
+    <a href="index.html" class="nav-item" data-page="index">
+        <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+        <span>首页</span>
+    </a>
+
+    <a href="characters.html" class="nav-item active" data-page="characters">
+        <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+        <span>角色柜</span>
+    </a>
+
+</nav>
+
+<script src="js/data.js"></script>
+<script src="js/common.js"></script>
+<script src="js/character-detail.js"></script>
+
 </body>
 </html>
