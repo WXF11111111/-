@@ -1,34 +1,12 @@
 let allCharacters = CHARACTERS_DATA.characters;
-let myCharacters = [];
+let myCharacters = Storage.get('myCharacters') || [];
 
-/* =========================
-   初始化
-========================= */
 document.addEventListener('DOMContentLoaded', () => {
     setActiveNav('characters');
-
-    loadCharacters();
     renderCharacterSelect();
     renderMyCharacters();
 });
 
-/* =========================
-   数据加载（统一入口）
-========================= */
-function loadCharacters() {
-    myCharacters = Storage.get('myCharacters') || [];
-}
-
-/* =========================
-   保存数据（统一入口）
-========================= */
-function saveCharacters() {
-    Storage.set('myCharacters', myCharacters);
-}
-
-/* =========================
-   渲染选择器
-========================= */
 function renderCharacterSelect() {
     const select = document.getElementById('characterSelect');
     select.innerHTML = '';
@@ -41,70 +19,33 @@ function renderCharacterSelect() {
     });
 }
 
-/* =========================
-   渲染角色列表
-========================= */
 function renderMyCharacters() {
     const ctn = document.getElementById('myCharacters');
 
     if (!myCharacters.length) {
-        ctn.innerHTML = `
-            <div style="grid-column:1/-1;text-align:center;padding:30px 0;">
-                暂无角色，点击右上角新建
-            </div>
-        `;
+        ctn.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:30px 0;">暂无角色</div>`;
         return;
     }
 
-    ctn.innerHTML = myCharacters
-        .map((char, idx) => createCharacterCard(char, idx))
-        .join('');
-}
+    ctn.innerHTML = myCharacters.map((char, idx) => {
+        const base = allCharacters.find(x => x.id === char.id);
 
-/* =========================
-   单个角色卡片
-========================= */
-function createCharacterCard(char, idx) {
-    const base = allCharacters.find(x => x.id === char.id);
-
-    return `
+        return `
         <div class="character-card" style="position:relative;">
-            
             <div onclick="openCharacterDetail('${char.id}','${char.self}')">
-                <img 
-                    src="${base?.image || ''}" 
-                    style="width:100%;aspect-ratio:1/1;object-fit:cover;"
-                >
-
+                <img src="${base?.image || ''}" style="width:100%;aspect-ratio:1/1;object-fit:cover;">
                 <div class="name">${char.name}</div>
-                <div class="chain">
-                    自我意识 ${char.self} · Lv.${char.level}
-                </div>
+                <div class="chain">自我意识 ${char.self} · Lv.${char.level}</div>
             </div>
 
-            <div 
-                onclick="deleteCharacter(${idx})"
-                style="
-                    position:absolute;
-                    top:6px;
-                    right:6px;
-                    background:#e63946;
-                    color:white;
-                    font-size:12px;
-                    padding:2px 6px;
-                    cursor:pointer;
-                "
-            >
+            <div onclick="deleteCharacter(${idx})"
+                 style="position:absolute;top:6px;right:6px;background:#e63946;color:white;padding:2px 6px;">
                 ×
             </div>
-
-        </div>
-    `;
+        </div>`;
+    }).join('');
 }
 
-/* =========================
-   创建角色
-========================= */
 function createCharacter() {
     const id = document.getElementById('characterSelect').value;
     const self = document.getElementById('selfLevel').value;
@@ -113,39 +54,31 @@ function createCharacter() {
     const base = allCharacters.find(x => x.id === id);
 
     if (myCharacters.some(x => x.id === id && x.self === self)) {
-        alert('该角色已存在');
+        alert('角色已存在');
         return;
     }
 
-    const newChar = {
+    myCharacters.push({
         id,
         name: base.name,
         self,
         level,
-        fragments: []
-    };
+        fragments: []   // ✅ 修复这里
+    });
 
-    myCharacters.push(newChar);
-    saveCharacters();
+    Storage.set('myCharacters', myCharacters);
     renderMyCharacters();
-
     hideModal('createCharacterModal');
 }
 
-/* =========================
-   删除角色
-========================= */
 function deleteCharacter(index) {
-    if (!confirm('确定要删除该角色吗？')) return;
+    if (!confirm('确定删除？')) return;
 
     myCharacters.splice(index, 1);
-    saveCharacters();
+    Storage.set('myCharacters', myCharacters);
     renderMyCharacters();
 }
 
-/* =========================
-   跳转详情
-========================= */
 function openCharacterDetail(id, self) {
     navigateTo('character-detail.html', { id, self });
 }
