@@ -1,103 +1,126 @@
-// 本地存储工具类
+/* =========================
+   Storage（安全版）
+========================= */
 const Storage = {
-    get(key) {
+    get(key, fallback = null) {
         try {
-            return JSON.parse(localStorage.getItem(key) || '[]');
+            const val = localStorage.getItem(key);
+            return val ? JSON.parse(val) : fallback;
         } catch (e) {
-            return [];
+            console.warn(`Storage.get 解析失败: ${key}`, e);
+            return fallback;
         }
     },
+
     set(key, data) {
-        localStorage.setItem(key, JSON.stringify(data));
+        try {
+            localStorage.setItem(key, JSON.stringify(data));
+        } catch (e) {
+            console.error(`Storage.set 失败: ${key}`, e);
+        }
     },
+
     remove(key) {
         localStorage.removeItem(key);
+    },
+
+    clear() {
+        localStorage.clear();
     }
 };
 
-// 页面导航高亮
+/* =========================
+   页面导航
+========================= */
 function setActiveNav(page) {
-    document.querySelectorAll('.nav-item').forEach(item => {
-        item.classList.remove('active');
-    });
-    const activeItem = document.querySelector(`.nav-item[data-page="${page}"]`);
-    if (activeItem) activeItem.classList.add('active');
+    document.querySelectorAll('.nav-item')
+        .forEach(item => item.classList.remove('active'));
+
+    const active = document.querySelector(
+        `.nav-item[data-page="${page}"]`
+    );
+
+    if (active) active.classList.add('active');
 }
 
-// 跳转页面（带参数）
+/* =========================
+   路由系统（升级版）
+========================= */
 function navigateTo(url, params = {}) {
-    const queryString = new URLSearchParams(params).toString();
-    const fullUrl = queryString ? `${url}?${queryString}` : url;
-    window.location.href = fullUrl;
+    const qs = new URLSearchParams(params).toString();
+    window.location.href = qs ? `${url}?${qs}` : url;
 }
 
-// 读取JSON配置文件
-async function loadJSON(filePath) {
+/* =========================
+   URL参数
+========================= */
+function getUrlParams() {
+    return Object.fromEntries(
+        new URLSearchParams(window.location.search)
+    );
+}
+
+/* =========================
+   JSON加载
+========================= */
+async function loadJSON(path) {
     try {
-        const response = await fetch(filePath);
-        return await response.json();
+        const res = await fetch(path);
+        return await res.json();
     } catch (e) {
-        console.error('加载配置文件失败:', e);
-        return {};
+        console.error("JSON加载失败:", path, e);
+        return null;
     }
 }
 
-// 显示弹窗
-function showModal(modalId) {
-    document.getElementById(modalId).style.display = 'flex';
+/* =========================
+   UI工具
+========================= */
+function showModal(id) {
+    const el = document.getElementById(id);
+    if (el) el.style.display = 'flex';
 }
 
-// 隐藏弹窗
-function hideModal(modalId) {
-    document.getElementById(modalId).style.display = 'none';
+function hideModal(id) {
+    const el = document.getElementById(id);
+    if (el) el.style.display = 'none';
 }
 
-// 解析URL参数
-function getUrlParams() {
-    return Object.fromEntries(new URLSearchParams(window.location.search));
-}
+/* =========================
+   ⚠️ 业务层（建议迁移出去）
+========================= */
 
-// ======================
-// 已移除OCR功能
-// ======================
-
-function drawResult(ma, mv, s1, s2, s3, s4) {
-    const c = document.createElement('canvas');
-    c.width = 360;
-    c.height = 480;
-    const g = c.getContext('2d');
-
-    g.fillStyle = "#1b1b1b";
-    g.fillRect(0,0,360,480);
-
-    g.fillStyle = "#e63946";
-    g.font = "20px sans-serif";
-    g.fillText("碎片分析结果", 100, 40);
-
-    g.fillStyle = "#fff";
-    g.font = "16px sans-serif";
-    g.fillText(`主属性：${ma} = ${mv}`, 20, 90);
-    g.fillText(`副词条1：${s1}`, 20, 130);
-    g.fillText(`副词条2：${s2}`, 20, 170);
-    g.fillText(`副词条3：${s3}`, 20, 210);
-    g.fillText(`副词条4：${s4}`, 20, 250);
-
-    document.getElementById('resultImage').src = c.toDataURL();
-    document.getElementById('resultCard').style.display = "block";
-}
-
+/**
+ * ⚠️ 建议：不要放在common.js
+ * 👉 以后应该迁移到 fragment-service.js
+ */
 function saveOneFragment(data) {
     const params = getUrlParams();
-    const list = Storage.get('myCharacters');
-    const idx = list.findIndex(x => x.id === params.id && x.self === params.self);
-    const char = list[idx];
-    if (!char.fragments) char.fragments = [];
-    if (char.fragments.length >=6) {
-        alert("最多只能保存6个碎片！");
+    const list = Storage.get('myCharacters', []);
+
+    const idx = list.findIndex(
+        x => x.id === params.id && x.self === params.self
+    );
+
+    if (idx === -1) {
+        alert("角色不存在");
         return;
     }
+
+    const char = list[idx];
+    if (!Array.isArray(char.fragments)) {
+        char.fragments = [];
+    }
+
+    if (char.fragments.length >= 6) {
+        alert("最多只能保存6个碎片");
+        return;
+    }
+
     char.fragments.push(data);
+
     list[idx] = char;
     Storage.set('myCharacters', list);
-    window.location.reload();
+
+    return true;
 }
