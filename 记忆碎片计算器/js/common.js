@@ -1,126 +1,49 @@
-/* =========================
-   Storage（安全版）
-========================= */
+// 本地存储工具类
 const Storage = {
-    get(key, fallback = null) {
+    get(key) {
         try {
-            const val = localStorage.getItem(key);
-            return val ? JSON.parse(val) : fallback;
+            const data = localStorage.getItem(key);
+            return data ? JSON.parse(data) : null;
         } catch (e) {
-            console.warn(`Storage.get 解析失败: ${key}`, e);
-            return fallback;
+            console.error('Storage get error:', e);
+            return null;
         }
     },
 
     set(key, data) {
-        try {
-            localStorage.setItem(key, JSON.stringify(data));
-        } catch (e) {
-            console.error(`Storage.set 失败: ${key}`, e);
-        }
+        localStorage.setItem(key, JSON.stringify(data));
     },
 
     remove(key) {
         localStorage.removeItem(key);
-    },
-
-    clear() {
-        localStorage.clear();
     }
 };
 
-/* =========================
-   页面导航
-========================= */
+// 页面导航高亮
 function setActiveNav(page) {
-    document.querySelectorAll('.nav-item')
-        .forEach(item => item.classList.remove('active'));
-
-    const active = document.querySelector(
-        `.nav-item[data-page="${page}"]`
-    );
-
-    if (active) active.classList.add('active');
+    document.querySelectorAll('.nav-item').forEach(item => {
+        item.classList.remove('active');
+    });
+    const activeItem = document.querySelector(`.nav-item[data-page="${page}"]`);
+    if (activeItem) activeItem.classList.add('active');
 }
 
-/* =========================
-   路由系统（升级版）
-========================= */
+// 跳转页面（带参数）
 function navigateTo(url, params = {}) {
-    const qs = new URLSearchParams(params).toString();
-    window.location.href = qs ? `${url}?${qs}` : url;
+    const queryString = new URLSearchParams(params).toString();
+    window.location.href = queryString ? `${url}?${queryString}` : url;
 }
 
-/* =========================
-   URL参数
-========================= */
+// URL参数
 function getUrlParams() {
-    return Object.fromEntries(
-        new URLSearchParams(window.location.search)
-    );
+    return Object.fromEntries(new URLSearchParams(window.location.search));
 }
 
-/* =========================
-   JSON加载
-========================= */
-async function loadJSON(path) {
-    try {
-        const res = await fetch(path);
-        return await res.json();
-    } catch (e) {
-        console.error("JSON加载失败:", path, e);
-        return null;
-    }
-}
-
-/* =========================
-   UI工具
-========================= */
+// modal
 function showModal(id) {
-    const el = document.getElementById(id);
-    if (el) el.style.display = 'flex';
+    document.getElementById(id).style.display = 'flex';
 }
 
 function hideModal(id) {
-    const el = document.getElementById(id);
-    if (el) el.style.display = 'none';
-}
-
-/* =========================
-   ⚠️ 业务层（建议迁移出去）
-========================= */
-
-/**
- * ⚠️ 建议：不要放在common.js
- * 👉 以后应该迁移到 fragment-service.js
- */
-function saveOneFragment(data) {
-    const params = getUrlParams();
-    const list = Storage.get('myCharacters', []);
-
-    const idx = list.findIndex(
-        x => x.id === params.id && x.self === params.self
-    );
-
-    if (idx === -1) {
-        alert("角色不存在");
-        return;
-    }
-
-    const char = list[idx];
-    if (!Array.isArray(char.fragments)) {
-        char.fragments = [];
-    }
-
-    if (char.fragments.length >= 6) {
-        alert("最多只能保存6个碎片");
-        return;
-    }
-
-    char.fragments.push(data);
-
-    list[idx] = char;
-    Storage.set('myCharacters', list);
-
-    return true;
+    document.getElementById(id).style.display = 'none';
 }
