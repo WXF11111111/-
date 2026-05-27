@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="卡厄斯工坊 - 记忆碎片计算器 | 游戏角色遗物评分系统 | 二次元游戏工具站">
+    <meta name="keywords" content="卡厄斯工坊,记忆碎片,评分计算器,游戏工具,二次元">
+    <meta name="author" content="卡厄斯工坊">
+    <meta property="og:title" content="卡厄斯工坊 - 记忆碎片计算器">
+    <meta property="og:description" content="专业的记忆碎片评分工具，支持角色养成分析和分享">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://kaosworkshop.github.io/assets/og-image.png">
+    <title>卡厄斯工坊 - 记忆碎片计算器</title>
+    
+    <!-- 预加载关键资源 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- 字体 -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- 样式 -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/home.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+    
+    <!-- 主题色 -->
+    <meta name="theme-color" content="#0a0a10">
+</head>
+<body>
+    <!-- 动态粒子背景 -->
+    <div class="bg-particles">
+        <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
+        <div class="particle" style="left: 25%; animation-delay: 3s;"></div>
+        <div class="particle" style="left: 40%; animation-delay: 6s;"></div>
+        <div class="particle" style="left: 55%; animation-delay: 9s;"></div>
+        <div class="particle" style="left: 70%; animation-delay: 12s;"></div>
+        <div class="particle" style="left: 85%; animation-delay: 15s;"></div>
+    </div>
+
+    <!-- 顶部导航 -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <div class="logo-icon">⚙️</div>
+                <span class="logo-text">卡厄斯工坊</span>
+            </div>
+            <nav class="header-nav">
+                <a href="#features" class="nav-link">功能</a>
+                <a href="#guide" class="nav-link">使用指南</a>
+                <a href="#about" class="nav-link">关于</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 英雄区域 -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-title">
+                <span class="title-main">记忆碎片计算器</span>
+                <span class="title-sub">专业养成分析工具</span>
+            </div>
+            <p class="hero-desc">精准计算记忆碎片评分，智能推荐养成方案，助你打造最强角色</p>
+            <div class="hero-actions">
+                <a href="characters.html" class="btn btn-primary">
+                    <span class="btn-icon">🚀</span>
+                    <span>开始使用</span>
+                </a>
+                <a href="#features" class="btn btn-secondary">
+                    <span class="btn-icon">📋</span>
+                    <span>了解更多</span>
+                </a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-value">10K+</span>
+                    <span class="stat-label">用户使用</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">50+</span>
+                    <span class="stat-label">角色支持</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">99%</span>
+                    <span class="stat-label">数据准确</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 功能特性 -->
+    <section id="features" class="features">
+        <div class="section-header">
+            <h2 class="section-title">核心功能</h2>
+            <p class="section-desc">为玩家打造的专业工具</p>
+        </div>
+        
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h3 class="feature-title">智能评分</h3>
+                <p class="feature-desc">基于游戏机制的精准评分算法，支持多种角色类型</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📈</div>
+                <h3 class="feature-title">毕业分析</h3>
+                <p class="feature-desc">自动判断毕业状态，给出针对性养成建议</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💾</div>
+                <h3 class="feature-title">本地存储</h3>
+                <p class="feature-desc">数据本地保存，无需联网，安全可靠</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📤</div>
+                <h3 class="feature-title">分享功能</h3>
+                <p class="feature-desc">生成精美分享卡片，展示你的养成成果</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🏆</div>
+                <h3 class="feature-title">排行榜</h3>
+                <p class="feature-desc">本地排行榜，记录你的最强角色</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📱</div>
+                <h3 class="feature-title">移动端适配</h3>
+                <p class="feature-desc">完美适配手机端，随时随地计算评分</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 使用指南 -->
+    <section id="guide" class="guide">
+        <div class="section-header">
+            <h2 class="section-title">使用指南</h2>
+            <p class="section-desc">简单四步，轻松上手</p>
+        </div>
+        
+        <div class="guide-steps">
+            <div class="guide-step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>创建角色</h3>
+                    <p>在角色柜中创建你的游戏角色</p>
+                </div>
+            </div>
+            <div class="guide-arrow">→</div>
+            <div class="guide-step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3>录入碎片</h3>
+                    <p>为角色添加记忆碎片数据</p>
+                </div>
+            </div>
+            <div class="guide-arrow">→</div>
+            <div class="guide-step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3>计算评分</h3>
+                    <p>系统自动计算综合评分</p>
+                </div>
+            </div>
+            <div class="guide-arrow">→</div>
+            <div class="guide-step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h3>分享成果</h3>
+                    <p>生成卡片分享你的养成成果</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 关于 -->
+    <section id="about" class="about">
+        <div class="section-header">
+            <h2 class="section-title">关于卡厄斯工坊</h2>
+        </div>
+        <p class="about-content">
+            卡厄斯工坊是一个专注于二次元游戏的工具站，致力于为玩家提供专业、精准的游戏数据工具。
+            我们的记忆碎片计算器基于游戏实际机制开发，帮助玩家更好地理解角色养成，提升游戏体验。
+        </p>
+        <div class="about-links">
+            <a href="https://github.com/kaosworkshop" target="_blank" class="social-link">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                </svg>
+                <span>Github</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 卡厄斯工坊 · Kaos Workshop</p>
+            <p class="footer-links">
+                <a href="#privacy">隐私政策</a>
+                <span>|</span>
+                <a href="#terms">使用条款</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- 底部导航（移动端） -->
+    <nav class="nav-bar">
+        <a href="index.html" class="nav-item active" data-page="index">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+            <span>首页</span>
+        </a>
+        <a href="characters.html" class="nav-item" data-page="characters">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+            <span>角色柜</span>
+        </a>
+        <a href="ranking.html" class="nav-item" data-page="ranking">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+            <span>排行榜</span>
+        </a>
+    </nav>
+
+    <!-- 脚本 -->
+    <script src="js/common.js"></script>
+    <script src="js/home.js"></script>
+</body>
+</html>

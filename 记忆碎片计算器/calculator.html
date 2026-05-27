@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>碎片评分计算器 - 卡厄斯工坊</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/calculator.css">
+</head>
+<body>
+    <div class="calculator-container">
+        <h1 style="font-size: 24px; margin-bottom: 16px;">记忆碎片评分</h1>
+        
+        <!-- 角色信息 -->
+        <div class="card" id="charInfoCard" style="display: none;">
+            <div style="display: flex; gap: 12px; align-items: center;">
+                <img id="calcCharImage" src="" alt="" style="width: 40px; height: 40px; border-radius: 0;">
+                <div>
+                    <div id="calcCharName" style="font-size: 16px;"></div>
+                    <div id="calcCharDesc" style="font-size: 12px; color: var(--text-secondary);"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 部位选择 -->
+        <div class="part-tabs">
+            <div class="part-tab active" data-part="impact">冲击/左一</div>
+            <div class="part-tab" data-part="suppress">压抑/左二</div>
+            <div class="part-tab" data-part="deny">否定/左三</div>
+            <div class="part-tab" data-part="ideal">理想/右一</div>
+            <div class="part-tab" data-part="desire">渴望/右二</div>
+            <div class="part-tab" data-part="imagine">想像/右三</div>
+        </div>
+
+        <!-- 主属性输入 -->
+        <div class="card">
+            <h3 style="margin-bottom: 12px;">主属性</h3>
+            <div class="input-group">
+                <label for="levelSelect">强化等级</label>
+                <select id="levelSelect">
+                    <option value="0">强化0</option>
+                    <option value="1">强化1</option>
+                    <option value="2">强化2</option>
+                    <option value="3">强化3</option>
+                    <option value="4">强化4</option>
+                    <option value="5" selected>强化5</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="mainAttrSelect">主属性类型</label>
+                <select id="mainAttrSelect"></select>
+            </div>
+            <div class="input-group">
+                <label for="mainAttrValue">主属性数值</label>
+                <input type="number" id="mainAttrValue" placeholder="输入数值">
+            </div>
+        </div>
+
+        <!-- 副词条输入 -->
+        <div class="card">
+            <h3 style="margin-bottom: 12px;">副词条</h3>
+            <div class="attr-inputs">
+                <select id="subAttr1Type">
+                    <option value="">选择副词条1</option>
+                </select>
+                <input type="number" id="subAttr1Value" placeholder="数值">
+            </div>
+            <div class="attr-inputs">
+                <select id="subAttr2Type">
+                    <option value="">选择副词条2</option>
+                </select>
+                <input type="number" id="subAttr2Value" placeholder="数值">
+            </div>
+            <div class="attr-inputs">
+                <select id="subAttr3Type">
+                    <option value="">选择副词条3</option>
+                </select>
+                <input type="number" id="subAttr3Value" placeholder="数值">
+            </div>
+            <div class="attr-inputs">
+                <select id="subAttr4Type">
+                    <option value="">选择副词条4（强化+1）</option>
+                </select>
+                <input type="number" id="subAttr4Value" placeholder="数值">
+            </div>
+        </div>
+
+        <!-- 操作按钮 -->
+        <div style="display: flex; gap: 10px; margin-top: 16px;">
+            <button class="btn" style="flex: 1;" onclick="calculateScore()">计算并保存</button>
+        </div>
+
+        <!-- 评分结果 -->
+        <div class="result-display" id="resultDisplay" style="display: none;">
+            <div class="score-value" id="scoreValue">0</div>
+            <div id="scoreRank" style="margin-top: 8px; color: var(--text-secondary);">--</div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+            </div>
+            <div style="display: flex; justify-content: space-around; margin-top: 16px;">
+                <div>
+                    <div style="font-size: 20px; font-weight: bold; color: var(--accent);" id="graduationRate">0%</div>
+                    <div style="font-size: 12px; color: var(--text-secondary);">毕业率</div>
+                </div>
+                <div>
+                    <div style="font-size: 20px; font-weight: bold; color: var(--accent);" id="totalPoints">0</div>
+                    <div style="font-size: 12px; color: var(--text-secondary);">总点数</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="nav-bar">
+        <a href="index.html" class="nav-item" data-page="index">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+            <span>首页</span>
+        </a>
+        <a href="characters.html" class="nav-item" data-page="characters">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+            <span>角色柜</span>
+        </a>
+        <a href="ranking.html" class="nav-item" data-page="ranking">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+            <span>排行榜</span>
+        </a>
+    </nav>
+
+    <script src="js/data.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/calculator.js"></script>
+</body>
+</html>
